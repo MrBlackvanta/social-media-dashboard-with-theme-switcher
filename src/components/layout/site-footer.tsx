@@ -1,12 +1,12 @@
-export default function Footer() {
+export default function SiteFooter() {
   return (
-    <footer className="px-6 pt-10 pb-0.5 text-center text-sm">
+    <footer className="px-6 pt-10 pb-0.5 text-center text-sm leading-6 text-muted">
       Challenge by{" "}
       <a
         href="https://www.frontendmentor.io?ref=challenge"
         target="_blank"
         rel="noopener noreferrer"
-        className="underline underline-offset-2"
+        className="v-attribution-link"
       >
         Frontend Mentor
       </a>
@@ -15,7 +15,7 @@ export default function Footer() {
         href="https://www.linkedin.com/in/abdelrhman-vanta/"
         target="_blank"
         rel="noopener noreferrer"
-        className="underline underline-offset-2"
+        className="v-attribution-link"
       >
         Abdelrhman Abdelaal
       </a>

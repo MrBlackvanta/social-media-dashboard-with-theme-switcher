@@ -1,4 +1,4 @@
-import Footer from "@/components/layout/footer";
+import { SiteFooter } from "@/components/layout";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
         </h1>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </>
   );
 }
