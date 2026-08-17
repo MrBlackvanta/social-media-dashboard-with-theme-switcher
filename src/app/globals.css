@@ -1,6 +1,119 @@
 @import "tailwindcss";
 @source not "../../*.md";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --text-heading: 1.5rem;
+  --text-heading-lg: 1.75rem;
+  --text-count: 3.5rem;
+  --text-count--line-height: 3rem;
+  --text-count--letter-spacing: -0.0357em;
+  --text-stat: 2rem;
+  --text-label: 0.875rem;
+  --text-meta: 0.75rem;
+  --text-caption: 0.75rem;
+  --text-caption--letter-spacing: 0.4167em;
+
+  --radius-card: 0.3125rem;
+  --radius-band: 1.25rem;
+  --container-board: 69.375rem;
+}
+
 @theme inline {
   --font-sans: var(--font-inter);
+
+  --color-page: var(--page);
+  --color-band: var(--band);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-rule: var(--rule);
+  --color-track: var(--track);
+  --color-knob: var(--knob);
+  --color-up: var(--up);
+  --color-down: var(--down);
+
+  --color-facebook: var(--facebook);
+  --color-twitter: var(--twitter);
+  --color-youtube: var(--youtube);
+  --color-instagram-pink: var(--instagram-pink);
+  --color-instagram-yellow: var(--instagram-yellow);
+  --color-toggle-green: var(--toggle-green);
+  --color-toggle-blue: var(--toggle-blue);
+}
+
+@layer base {
+  :root {
+    --page: #ffffff;
+    --band: #f7f9ff;
+    --card: #f1f3fa;
+    --card-hover: #e1e4f0;
+    --ink: #1d1f29;
+    --muted: #61657a;
+    --rule: #848bab;
+    --track: #848bab;
+    --knob: #ffffff;
+    --up: #137458;
+    --down: #c52430;
+
+    --facebook: #178ff5;
+    --twitter: #1da1f2;
+    --youtube: #c4032b;
+    --instagram-pink: #df4896;
+    --instagram-yellow: #fdc366;
+    --toggle-green: #40db82;
+    --toggle-blue: #388fe7;
+  }
+
+  [data-theme="dark"] {
+    --page: #1d1f29;
+    --band: #20222f;
+    --card: #252b42;
+    --card-hover: #333a55;
+    --ink: #ffffff;
+    --muted: #99a3cc;
+    --rule: #333a55;
+    --knob: #252b42;
+    --up: #1fba8c;
+    --down: #e98a90;
+  }
+
+  html {
+    overflow-y: scroll;
+  }
+
+  body {
+    line-height: normal;
+    @apply bg-page text-ink;
+  }
+
+  a,
+  button {
+    @apply v-focus-ring;
+  }
+
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@utility v-focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 4px;
+  }
+}
+
+@utility v-attribution-link {
+  @apply underline underline-offset-2;
+
+  &:hover {
+    @apply text-ink;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    @apply transition-colors;
+  }
 }

@@ -4,7 +4,9 @@ export default function Home() {
   return (
     <>
       <main className="flex-1">
-        <h1>Social Media Dashboard</h1>
+        <h1 className="text-heading font-bold sm:text-heading-lg">
+          Social Media Dashboard
+        </h1>
       </main>
 
       <Footer />
