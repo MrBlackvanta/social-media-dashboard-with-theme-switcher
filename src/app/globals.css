@@ -17,7 +17,8 @@
 
   --radius-card: 0.3125rem;
   --radius-band: 1.25rem;
-  --container-board: 69.375rem;
+  --container-board: 72.375rem;
+  --breakpoint-xs: 32rem;
 }
 
 @theme inline {
@@ -80,10 +81,6 @@
     --down: #e98a90;
   }
 
-  html {
-    overflow-y: scroll;
-  }
-
   body {
     line-height: normal;
     @apply bg-page text-ink;
@@ -99,10 +96,21 @@
   }
 }
 
+@utility v-board {
+  @apply mx-auto w-full max-w-board px-6;
+}
+
+@utility v-instagram-bar {
+  @apply bg-linear-to-r/srgb from-instagram-yellow to-instagram-pink;
+}
+
+@utility v-toggle-gradient {
+  @apply bg-linear-to-bl/srgb from-toggle-green to-toggle-blue;
+}
+
 @utility v-focus-ring {
   &:focus-visible {
-    outline: 2px solid var(--color-ink);
-    outline-offset: 4px;
+    @apply outline-2 outline-offset-4 outline-ink;
   }
 }
 

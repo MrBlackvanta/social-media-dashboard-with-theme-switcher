@@ -83,6 +83,41 @@ design's own export shows the bar's top and bottom rows are identical, i.e. a fu
 sweep, which is what ships.
 
 **There is no tablet frame,** so everything between 376px and 1439px is designed rather than derived.
+Both grids go one column below 512px, two columns from 512 to 1023, and four from 1024 up, and the
+header collapses from its stacked mobile form (title, rule, toggle row) to a single row at 640. The
+512 threshold is measured, not chosen for neatness: two columns need about 180px of card width
+before the widest overview card (`Profile Views` plus its icon, then `5462` beside `2257%`) starts to
+crowd, and `2 x 217 + 30 + 48` lands at 512 with room to spare. Letting one column run to 639 the way
+the mobile layout would have left 591px-wide cards — a stretched phone layout rather than a tablet
+one.
+
+**The overview card's padding is asymmetric, 24px left and 31px right,** because that is what the
+file draws — consistently, across all eight cards and both breakpoints. The icon and the percentage
+both align to a right edge 31px in, so symmetrising to `px-6` would move two elements 7px from where
+the design puts them.
+
+**The toggle's knob sits on the right in the light theme and the left in the dark one,** which is
+inverted from the usual "checked is to the right". That is how all four frames draw it, so it ships
+that way; the state is carried by `role="switch"` plus `aria-checked` and the visible `Dark Mode`
+label rather than by the knob's position.
+
+**The delta arrow occupies an 8px slot sitting 2px below the text baseline.** The file places the up
+triangle in the top half of that slot and the down triangle in the bottom half, which is the only
+reason the two differ by 4px. Both icons therefore carry a `0 0 8 8` viewBox and one alignment rule
+covers them.
+
+**No forced scrollbar.** Nothing on this page changes the document height — the theme toggle swaps
+colours only — so `html { overflow-y: scroll }` would buy no layout stability and cost a permanently
+disabled scrollbar plus 15px of width, which also stops the full-bleed top band short of the viewport
+edge. Without it the desktop layout measures the design's 1110px board inside exactly 1440px.
+
+**No scroll reveals.** Measured against a 900px viewport, the document is 2459px at 320, 2430 at 375,
+2406 up to 511, 1385 to 639, 1326 to 1023, and exactly 900 from 1024 up — so at the design's own
+breakpoint the page does not scroll at all and a reveal would be dead CSS there. Adding one only
+below 1024 would be a mobile-only flourish the design never asks for.
+
+**The overview heading sits 24px above its grid at both breakpoints,** where the file draws 24 on
+desktop and 27 on mobile for a heading of identical size. One value, 3px of deviation on mobile.
 
 ## Author
 

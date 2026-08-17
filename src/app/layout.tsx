@@ -15,6 +15,8 @@ const description =
 const siteUrl =
   "https://social-media-dashboard-with-theme-switcher.abdelrhman-ahmed8881.workers.dev";
 
+const applyStoredTheme = `try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
@@ -38,6 +40,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1d1f29" },
+  ],
 };
 
 export default function RootLayout({
@@ -46,8 +52,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="flex min-h-dvh flex-col">{children}</body>
+    <html
+      lang="en"
+      className={`${inter.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <body className="relative isolate flex min-h-dvh flex-col">
+        <script dangerouslySetInnerHTML={{ __html: applyStoredTheme }} />
+        {children}
+      </body>
     </html>
   );
 }

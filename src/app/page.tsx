@@ -1,15 +1,26 @@
-import { SiteFooter } from "@/components/layout";
+import { InstagramGradient } from "@/components/icons";
+import { SiteFooter, SiteHeader } from "@/components/layout";
+import { FollowersPanel, OverviewPanel } from "@/views/home";
 
 export default function Home() {
   return (
     <>
-      <main className="flex-1">
-        <h1 className="text-heading font-bold sm:text-heading-lg">
-          Social Media Dashboard
-        </h1>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-58.75 rounded-b-band bg-band sm:h-61"
+      />
+
+      <div className="v-board">
+        <SiteHeader />
+      </div>
+
+      <main className="v-board mt-10 flex-1 sm:mt-11.5">
+        <FollowersPanel />
+        <OverviewPanel />
       </main>
 
       <SiteFooter />
+      <InstagramGradient />
     </>
   );
 }
