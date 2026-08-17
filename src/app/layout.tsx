@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+
+import { InstagramGradient } from "@/components/icons";
+import { applyStoredTheme } from "@/lib/theme";
 import "./globals.css";
 
 const inter = Inter({
@@ -14,8 +17,6 @@ const description =
   "Follower counts and today's engagement across Facebook, Twitter, Instagram and YouTube, with a light and dark theme — a Frontend Mentor challenge built with Next.js, TypeScript and Tailwind CSS.";
 const siteUrl =
   "https://social-media-dashboard-with-theme-switcher.abdelrhman-ahmed8881.workers.dev";
-
-const applyStoredTheme = `try{document.documentElement.dataset.theme=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -40,10 +41,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1d1f29" },
-  ],
 };
 
 export default function RootLayout({
@@ -59,6 +56,7 @@ export default function RootLayout({
     >
       <body className="relative isolate flex min-h-dvh flex-col">
         <script dangerouslySetInnerHTML={{ __html: applyStoredTheme }} />
+        <InstagramGradient />
         {children}
       </body>
     </html>

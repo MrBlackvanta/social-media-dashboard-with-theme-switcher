@@ -3,7 +3,7 @@ import { overviewStats } from "@/data";
 
 export default function OverviewPanel() {
   return (
-    <section aria-labelledby="overview-heading" className="mt-11.5">
+    <section aria-labelledby="overview-heading">
       <h2
         id="overview-heading"
         className="text-heading font-bold text-muted dark:text-ink"

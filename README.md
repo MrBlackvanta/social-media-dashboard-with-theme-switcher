@@ -111,6 +111,27 @@ colours only — so `html { overflow-y: scroll }` would buy no layout stability 
 disabled scrollbar plus 15px of width, which also stops the full-bleed top band short of the viewport
 edge. Without it the desktop layout measures the design's 1110px board inside exactly 1440px.
 
+**`Total Followers: 23,004` is hard-coded, and deliberately not derived.** The four cards sum to
+22,270, and `11k` is not a precise number to begin with — the design's own total does not agree with
+the design's own cards. Computing it would contradict the design, so the copy is taken as drawn.
+
+**The toggle's hit area is 48px tall against the 24px control the design draws.** `py-3 -my-3` grows
+the touch target to meet WCAG 2.5.8 comfortably while leaving the layout and the knob's position
+untouched — the button's margin box stays 24px. The wrapper is a flex container for the same reason:
+as a block it let the button's negative bottom margin collapse out, which silently added 12px to the
+mobile header.
+
+**The theme switch animates as a circular sweep from the toggle**, via `startViewTransition`, with
+the light theme always the animated layer — it grows in over dark and shrinks away to reveal it. The
+whole effect is skipped when `prefers-reduced-motion: reduce` is set or the API is missing, in which
+case the theme flips instantly.
+
+**The `theme-color` meta is created by the pre-paint script rather than declared through the metadata
+API.** Declaring it in `viewport` leaves a second, stale copy in `<head>` once React re-renders
+metadata on hydration, and the browser honours whichever comes first — so the script owns the single
+tag and `setTheme` keeps it in step with the user's choice, instead of the meta tracking
+`prefers-color-scheme` and disagreeing with the theme actually on screen.
+
 **No scroll reveals.** Measured against a 900px viewport, the document is 2459px at 320, 2430 at 375,
 2406 up to 511, 1385 to 639, 1326 to 1023, and exactly 900 from 1024 up — so at the design's own
 breakpoint the page does not scroll at all and a reveal would be dead CSS there. Adding one only

@@ -1,6 +1,6 @@
 export default function SiteFooter() {
   return (
-    <footer className="px-6 pt-10 pb-0.5 text-center text-sm leading-6 text-muted">
+    <footer className="px-6 pt-10 pb-0.5 text-center text-label leading-6 text-muted">
       Challenge by{" "}
       <a
         href="https://www.frontendmentor.io?ref=challenge"

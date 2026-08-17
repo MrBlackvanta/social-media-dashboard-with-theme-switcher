@@ -2,7 +2,7 @@ import ThemeToggle from "@/components/theme-toggle";
 
 export default function SiteHeader() {
   return (
-    <header className="pt-9 sm:flex sm:items-start sm:justify-between">
+    <header className="v-board pt-9 sm:flex sm:items-start sm:justify-between">
       <div>
         <h1 className="text-heading font-bold lg:text-heading-lg">
           Social Media Dashboard
@@ -12,7 +12,7 @@ export default function SiteHeader() {
         </p>
       </div>
 
-      <div className="mt-6 border-t border-rule pt-4 sm:mt-3.25 sm:border-t-0 sm:pt-0">
+      <div className="mt-6 flex border-t border-rule pt-4 sm:mt-3.25 sm:border-t-0 sm:pt-0">
         <ThemeToggle />
       </div>
     </header>

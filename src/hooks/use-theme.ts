@@ -1,10 +1,8 @@
 "use client";
 
+import { THEME_COLORS, THEME_STORAGE_KEY, type Theme } from "@/lib/theme";
 import { useSyncExternalStore } from "react";
 
-export type Theme = "light" | "dark";
-
-const STORAGE_KEY = "theme";
 const listeners = new Set<() => void>();
 
 function subscribe(onChange: () => void) {
@@ -24,9 +22,12 @@ function readServerTheme(): Theme {
 
 export function setTheme(theme: Theme) {
   document.documentElement.dataset.theme = theme;
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute("content", THEME_COLORS[theme]);
   listeners.forEach((onChange) => onChange());
   try {
-    localStorage.setItem(STORAGE_KEY, theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
     // Safari in private mode throws on setItem; the theme still applies for this session.
   }

@@ -3,14 +3,22 @@ import { cn } from "@/lib";
 
 type DeltaProps = {
   change: number;
-  unit: "today" | "percent";
+  format: "today" | "percent";
   className?: string;
 };
 
-export default function Delta({ change, unit, className }: DeltaProps) {
+export default function Delta({ change, format, className }: DeltaProps) {
+  const amount = Math.abs(change);
+  const text = format === "percent" ? `${amount}%` : `${amount} Today`;
+
+  if (change === 0) {
+    return (
+      <p className={cn("text-meta font-bold text-muted", className)}>{text}</p>
+    );
+  }
+
   const rising = change > 0;
   const Arrow = rising ? ArrowUpIcon : ArrowDownIcon;
-  const amount = Math.abs(change);
 
   return (
     <p
@@ -24,7 +32,7 @@ export default function Delta({ change, unit, className }: DeltaProps) {
       <span className="sr-only">
         {rising ? "Increased by" : "Decreased by"}
       </span>{" "}
-      {unit === "percent" ? `${amount}%` : `${amount} Today`}
+      {text}
     </p>
   );
 }

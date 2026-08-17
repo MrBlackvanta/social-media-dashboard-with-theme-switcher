@@ -12,7 +12,7 @@ export default function OverviewCard({ stat }: { stat: OverviewStat }) {
 
       <div className="flex items-baseline justify-between">
         <p className="text-stat font-bold">{stat.value}</p>
-        <Delta change={stat.change} unit="percent" />
+        <Delta change={stat.change} format="percent" />
       </div>
     </li>
   );

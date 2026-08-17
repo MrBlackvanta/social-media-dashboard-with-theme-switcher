@@ -13,10 +13,12 @@ export default function FollowerCard({ stat }: { stat: FollowerStat }) {
           {stat.handle}
         </h3>
 
-        <p className="mt-7 text-count font-bold">{stat.total}</p>
-        <p className="mt-2.25 text-caption text-muted uppercase">{stat.unit}</p>
+        <p className="mt-7 text-count font-bold">{stat.value}</p>
+        <p className="mt-2.25 text-caption text-muted uppercase">
+          {stat.caption}
+        </p>
 
-        <Delta change={stat.change} unit="today" className="mt-6.25" />
+        <Delta change={stat.change} format="today" className="mt-6.25" />
       </div>
     </li>
   );

@@ -7,7 +7,14 @@ import {
 import type { Platform } from "@/data";
 import { cn } from "@/lib";
 
-const platforms = {
+type PlatformMark = {
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  name: string;
+  bar: string;
+  ink?: string;
+};
+
+const platforms: Record<Platform, PlatformMark> = {
   facebook: {
     Icon: FacebookIcon,
     name: "Facebook",
@@ -23,7 +30,6 @@ const platforms = {
   instagram: {
     Icon: InstagramIcon,
     name: "Instagram",
-    ink: "",
     bar: "v-instagram-bar",
   },
   youtube: {
@@ -32,7 +38,7 @@ const platforms = {
     ink: "text-youtube",
     bar: "bg-youtube",
   },
-} as const;
+};
 
 export function PlatformIcon({ platform }: { platform: Platform }) {
   const { Icon, name, ink } = platforms[platform];

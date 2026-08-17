@@ -1,4 +1,3 @@
-import { InstagramGradient } from "@/components/icons";
 import { SiteFooter, SiteHeader } from "@/components/layout";
 import { FollowersPanel, OverviewPanel } from "@/views/home";
 
@@ -10,17 +9,14 @@ export default function Home() {
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-58.75 rounded-b-band bg-band sm:h-61"
       />
 
-      <div className="v-board">
-        <SiteHeader />
-      </div>
+      <SiteHeader />
 
-      <main className="v-board mt-10 flex-1 sm:mt-11.5">
+      <main className="v-board mt-10 flex flex-1 flex-col gap-11.5 sm:mt-11.5">
         <FollowersPanel />
         <OverviewPanel />
       </main>
 
       <SiteFooter />
-      <InstagramGradient />
     </>
   );
 }
