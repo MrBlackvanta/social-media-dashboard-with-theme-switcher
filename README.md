@@ -140,6 +140,17 @@ below 1024 would be a mobile-only flourish the design never asks for.
 **The overview heading sits 24px above its grid at both breakpoints,** where the file draws 24 on
 desktop and 27 on mobile for a heading of identical size. One value, 3px of deviation on mobile.
 
+**`public/opengraph-image.jpg` is a 1200x630 share card**, composed from the page's own Inter and
+its dark-theme tokens rather than drawn: the headline on `#1d1f29` with the eyebrow in the Facebook
+blue at 4.92:1, beside a native-resolution shot of the light theme (`src/assets/og-panel.webp`,
+captured at 722x972 so its aspect already matches the card's 468x630 panel and nothing is cropped,
+and so the bottom edge lands in the 24px gap between two rows of overview cards). Putting the light
+panel on the dark ground is what gets both themes onto one card. It is not in the design; the
+challenge has no share card. It lives in `public/`, not at `src/app/opengraph-image.jpg`: the file
+convention appends a content hash as a query string, and LinkedIn's Post Inspector reports "No image
+found" for the result. `openGraph` and `twitter` both carry it by hand, with
+`card: "summary_large_image"` so it previews large rather than as a thumbnail.
+
 ## Author
 
 - UpWork - [Abdelrhman Abdelaal](https://www.upwork.com/freelancers/mrblackvanta)
