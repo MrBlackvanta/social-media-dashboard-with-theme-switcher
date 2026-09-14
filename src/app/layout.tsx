@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import { InstagramGradient } from "@/components/icons";
 import { applyStoredTheme } from "@/lib/theme";
+import { siteUrl } from "@/app/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,8 +17,6 @@ const siteName = "Social Media Dashboard";
 const title = `${siteName} | Four platforms at a glance`;
 const description =
   "Followers, likes and views across Facebook, Twitter, Instagram and YouTube, with a light theme and a dark one.";
-const siteUrl =
-  "https://social-media-dashboard-with-theme-switcher.abdelrhman-ahmed8881.workers.dev";
 const card = {
   url: "/opengraph-image.jpg",
   width: 1200,
